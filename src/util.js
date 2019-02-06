@@ -57,7 +57,11 @@ export function getJSON(url, params, callback) {
       callback('');
       return;
     }
-    callback(JSON.parse(xmlHttp.response));
+    if (xmlHttp.response) {
+      callback(JSON.parse(xmlHttp.response));
+    } else {
+      callback(JSON.parse(xmlHttp.responseText));
+    }
   };
   xmlHttp.open('GET', url + getParamString(params), true);
   xmlHttp.setRequestHeader('Accept', 'application/json');
