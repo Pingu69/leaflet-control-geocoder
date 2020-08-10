@@ -48,10 +48,11 @@ export default {
               text: loc.text,
               address: loc.address
             };
-
-            for (var j = 0; j < loc.context.length; j++) {
-              var id = loc.context[j].id.split('.')[0];
-              properties[id] = loc.context[j].text;
+            if (loc.context) {
+              for (var j = 0; j < loc.context.length; j++) {
+                var id = loc.context[j].id.split('.')[0];
+                properties[id] = loc.context[j].text;
+              }
             }
 
             results[i] = {
